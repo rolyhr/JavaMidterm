@@ -1,49 +1,86 @@
 ***ANSWER ALL QUESTIONS BELOW***
 
 What is a programming language?
-Answer:
+Answer: programming language is used to develop software programs, scripts, or other sets of
+        instructions for computers to execute. There are different types of programming language
+        such as Procedural, Functional, Scripting, OOP & more.
 
-What is a JDK composed of? Define each components?
-Answer:
+What is a JDK composed of? Define each component?
+Answer: JDK allows developers to create Java programs that can be executed and run by the JVM and JRE.
+        JDK is composed of Java Runtime Environment (JRE), interpreter/loader, compiler, archiver (jar)
+        and many more.
+        JRE: A JRE is part of a Java development kit (JDK). JRE is made up of a Java virtual machine (JVM),
+             Java class libraries, and the Java class loader.
+        Compiler: Compiler is a program that takes the source code (.java) and compiles it
+                  into a platform-independent Java file.
+        JDM: Components of JVM in Java:
+                    - ClassLoader
+                    - Execution Engine
 
 What is an IDE?
-Answer:
+Answer: IDE stands for Integrated Development Environment. IDE is a software used for building
+        applications where developer can write source code and connect different dependencies & API
+        to build a complete functional application.
 
 What are some of the most popular Java IDEs available in the market?
-Answer:
+Answer: IntelliJ IDEA, PyCharm, Eclipse, Atom, XCode, NetBeans and more.
 
 Explain the entire java life cycle.
-Answer:
+Answer: Developer writes code in the code editor also known as IDE.  To write any code, first developer
+        create .java files which is basically the class. Java has a built-in compiler. It will take the
+        source codes and convert it to byte-code, which is machine-readable code. Then it passes through
+        the JVM > load the class > verify the byte-code, to make sure all the codes are correct > then,
+        interpret to your operating system.
 
 What is a class?
-Answer:
+Answer: A class is a blueprint. Every class has States & Behaviors.
 
 What is an object?
-Answer:
+Answer: An Object has states and behavior. States are stored in fields & methods display object's
+        behavior.
 
 What is the entry point of an application?
-Answer:
+Answer: Main method is the entry point of a Java application.
 
 Why is the main() static?
-Answer:
+Answer: Main method is always static, because compiler would be able to call the main method without
+        creating an object the class.
 
 Which class is the superclass of all classes?
-Answer:
+Answer: Object
 
 What is difference between path and classpath variables?
-Answer:
+Answer: Path is an environment variable that is used to locate JDK to run java program and compile the
+        source file. Classpath is an environment variable is used by class loader to locate and load
+        bytecodes stored in the .class file.
 
 What is the difference between an Interface and Abstract class?
-Answer:
+Answer: Abstraction is hiding method implementation. You create an abstract method by using the keyword
+        abstract, but you do not implement the body. The way you implement the body by using a child class
+        to override the method. Abstract method is meant to be overridden by child class. An abstract
+        class can also contain non-abstract methods. This is why abstract classes are not 100% abstract.
+
+        Interface are 100% abstract by default. We cannot create objects of interfaces just like abstract
+        classes. All methods within an interface MUST be abstract. All variables within an interface are
+        implicitly FINAL (constant).
 
 Can you make an Object from an Interface and Abstract class? If yes or no, how would you do it?
-Answer:
+Answer: You cannot instantiate an Interface or an Abstract class because it is not complete. There are
+        methods that needs to be implemented by a child class using the override concept.
 
 What is Access Modifier?
-Answer:
+Answer: Access Modifiers allow us to restrict access to members of a class.
+        public - global access, can be access by any class or package.
+        protected - confined within the same package. Any class within the same package can access.
+        private - only accessible within the same class.
 
 What is OOP? Define each OOP concept.
-Answer:
+Answer: OOP stands for Object-oriented programming. OOP helps to organize various objects. There are
+        4 main Object-Oriented Programming Concepts:
+                Encapsulation: Data hiding
+                Polymorphism: Ability to change/adapt functionality
+                Abstraction: Hiding implementation of method
+                Inheritance: Extending states/behaviors to other classes.
 
 What is Java Package and which package is imported by default?
 Answer:
