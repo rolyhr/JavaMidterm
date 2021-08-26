@@ -1,14 +1,15 @@
 package design;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo extends EmpData{
 
     /*
-    This class should implement the Employee interface. You can do that by directly implementing it, however you must
-        also implement the Employee interface into an abstract class. So create an Abstract class then inherit that
-        abstract class into this EmployeeInfo class. Once you're done with designing EmployeeInfo class,
-        go to FortuneEmployee class to apply all the fields and attributes.
+    This class should implement the Employee interface. You can do that by directly implementing it,
+    however you must also implement the Employee interface into an abstract class. So create an Abstract
+    class then inherit that abstract class into this EmployeeInfo class. Once you're done with designing
+    EmployeeInfo class, go to FortuneEmployee class to apply all the fields and attributes.
 
     Important: YOU MUST USE:
         - OOP (Abstraction, Encapsulation, Inheritance and Polymorphism) concepts in every level possible.
@@ -21,6 +22,14 @@ public class EmployeeInfo {
      * Make sure to declare and use static, non-static & final fields
      */
     static String companyName;
+    private String firstName, lastName, deptName, email, password, backupEmail;
+    private int employeeID, securityPin;
+    private final int MINIMUM_WAGE = 15;
+    Scanner userInput;
+
+    //Format how the $ amount will print out
+    String pattern = "###,##0.00";
+    DecimalFormat decimalFormat = new DecimalFormat(pattern);
 
     /*
      You must implement the logic for below 2 methods and
@@ -31,24 +40,31 @@ public class EmployeeInfo {
     /*
      You must have/use multiple constructors
      */
-    public EmployeeInfo(int employeeId) {
+    public EmployeeInfo() {
 
     }
 
-    public EmployeeInfo(String name, int employeeId) {
-
+    public EmployeeInfo(String firstName, String lastName, String deptName, String email, int employeeID) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.deptName = deptName;
+        this.email = email;
+        this.employeeID = employeeID;
     }
 
     /*
-     You need to implement the logic of this method as such:
-        It should calculate Employee bonus based on salary and performance.
-        It should return the total yearly bonus.
-            Example: 10% of salary for best performance, 8% of salary for average performance and so on.
-            You can set arbitrary number for performance, so you probably need to send 2 arguments.
-     *
+      You need to implement the logic of this method as such:
+           It should calculate Employee bonus based on salary and performance.
+           It should return the total yearly bonus.
+      Example: 10% of salary for best performance, 8% of salary for average performance and so on.
+      You can set arbitrary number for performance, so you probably need to send 2 arguments.
      */
-    public static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
+    public static int calculateEmployeeBonus(int numberOfYearsWithCompany, int performanceScore) {
+        Scanner userInput = new Scanner(System.in);
+
         int total = 0;
+        //Performance score range: 0 - 100
+
         return total;
     }
 
@@ -57,7 +73,6 @@ public class EmployeeInfo {
         It should calculate Employee pension based on salary and numbers of years with the company.
         It should return the total pension amount.
             Example: Employee will receive 5% of salary as pension for every year they are with the company
-     *
      */
     public static int calculateEmployeePension() {
         int total = 0;
@@ -73,6 +88,64 @@ public class EmployeeInfo {
         // Calculate pension
 
         return total;
+    }
+
+    //generate a new employee ID & store the new id to employeeID global variable
+    @Override
+    public int employeeId() {
+        int upperBound = 999999;
+        int lowerBound = 100000;
+        return this.employeeID = lowerBound + (int)(Math.random() * ((upperBound - lowerBound) + 1));
+    }
+
+    //Gather first & last name then initialize value to the global variables
+    @Override
+    public void employeeName() {
+        userInput = new Scanner(System.in);
+        System.out.println("Enter first name: ");
+        this.firstName = userInput.nextLine();
+
+        System.out.println("Enter last name: ");
+        this.lastName = userInput.nextLine();
+    }
+
+    //Gather department name then initialize value to the global variables
+    @Override
+    public void assignDepartment() {
+        userInput = new Scanner(System.in);
+        System.out.println("Enter department name: ");
+        this.deptName = userInput.nextLine();
+    }
+
+    @Override
+    public int calculateSalary() {
+
+        return 0;
+    }
+
+    //This is a helper method for calculate salary
+    public int getTotalHrsWorked() {
+
+    }
+
+    @Override
+    public void benefitLayout() {
+
+    }
+
+    @Override
+    public void generateEmail() {
+
+    }
+
+    @Override
+    public void generatePassword() {
+
+    }
+
+    @Override
+    public void changePassword() {
+
     }
 
     private static class DateConversion {
