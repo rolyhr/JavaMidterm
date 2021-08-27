@@ -1,6 +1,16 @@
 package datastructure;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class DataReader {
+
+    String systemPath = System.getProperty("user.dir");
+    String relativePath = "\\src\\data\\self-driving-car.txt";
+    String path = systemPath + relativePath;
+    FileReader fileReader;
+    BufferedReader bufferedReader;
 
     public static void main(String[] args) {
         /*
@@ -18,8 +28,34 @@ public class DataReader {
          * Use For-Each & While-loop with Iterator to retrieve data.
          */
 
-        String textFile = System.getProperty("user.dir") + "/src/data/self-driving-car.txt";
+        DataReader dr = new DataReader();
+        dr.readFiles();
 
     }
 
+    //This readFiles() method will read any text file that you specified in the path
+    void readFiles() {
+        String data;
+        try {
+            fileReader = new FileReader(path);
+            bufferedReader = new BufferedReader(fileReader);
+        } catch (IOException e) {
+            System.out.println("Unable to find file path!");
+        }
+
+        try {
+            while ((data = bufferedReader.readLine()) != null) {
+                System.out.println(data);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fileReader.close();
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

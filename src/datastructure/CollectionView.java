@@ -1,6 +1,7 @@
 package datastructure;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class CollectionView {
 
@@ -17,6 +18,13 @@ public class CollectionView {
         map.put(4, "Boston");
         map.put(5, "San Jose");
         map.put(6, "Seattle");
+
+        //This FOR LOOP will print the key & value from map collection in organized format.
+        System.out.println("KEY" + "\t\t" + "VALUE");
+        for (Map.Entry<Integer, String> kv : map.entrySet()) {
+            System.out.print(kv.getKey() + "\t\t");
+            System.out.println(kv.getValue());
+        }
 
     }
 
