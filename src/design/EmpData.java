@@ -8,14 +8,12 @@ public abstract class EmpData implements Employee{
 
     public abstract void assignDepartment();
 
-    public abstract int calculateSalary();
+    public abstract double calculateSalary(double totalHrsWorked);
 
     public abstract void benefitLayout();
 
-    public abstract void generateEmail();
+    public abstract void formatEmail();
 
     public abstract void generatePassword();
-
-    public abstract void changePassword();
 
 }

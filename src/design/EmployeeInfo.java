@@ -1,6 +1,8 @@
 package design;
 
+import java.security.SecureRandom;
 import java.text.DecimalFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class EmployeeInfo extends EmpData{
@@ -21,10 +23,10 @@ public class EmployeeInfo extends EmpData{
     /*
      * Make sure to declare and use static, non-static & final fields
      */
-    static String companyName;
-    private String firstName, lastName, deptName, email, password, backupEmail;
-    private int employeeID, securityPin;
-    private final int MINIMUM_WAGE = 15;
+    String companyName;
+    private String firstName, lastName, deptName, email, password;
+    int employeeID;
+    private final int HOURLY_RATE = 55;
     Scanner userInput;
 
     //Format how the $ amount will print out
@@ -44,12 +46,51 @@ public class EmployeeInfo extends EmpData{
 
     }
 
-    public EmployeeInfo(String firstName, String lastName, String deptName, String email, int employeeID) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.deptName = deptName;
-        this.email = email;
-        this.employeeID = employeeID;
+    public EmployeeInfo(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void initialize() {
+        userInput = new Scanner(System.in);
+        System.out.println("Welcome to " + companyName + "!");
+        System.out.println("\tOption 1: Create New Employee Email");
+        System.out.println("\tOption 2: Calculate Weekly Salary");
+        System.out.println("\tOption 3: Check Yearly Bonus");
+        System.out.println("\tOption 4: Check Total Pension");
+        System.out.print("Make a selection from the top menu (i.e. For \"Option 2\", enter only \"2\"): ");
+        int selection = userInput.nextInt();
+
+        switch (selection) {
+            case 1:
+                generateEmail();
+                initialize();
+                break;
+            case 2:
+                System.out.println(firstName + " " + lastName + "'s " + "weekly salary is: " + decimalFormat.format(calculateSalary(getTotalHrsInput())));
+                initialize();
+                break;
+            case 3:
+                System.out.println(firstName + " " + lastName + "'s " + "yearly bonus is: " + decimalFormat.format(calculateEmployeeBonus()));
+                initialize();
+            case 4:
+                System.out.println(firstName + " " + lastName + "'s " + "total pension is: " + decimalFormat.format(calculateEmployeePension()));
+                initialize();
+            default:
+                System.out.println("INVALID SELECTION!");
+                initialize();
+        }
+    }
+
+    public void generateEmail() {
+        employeeName();
+        assignDepartment();
+        employeeId();
+        formatEmail();
+        System.out.println("Email created for: " + firstName + " " + lastName +
+                           "\n" + "Your Email is: " + email);
+        generatePassword();
+        System.out.println("Your default password is: " + password);
+        System.out.println("Your Employee ID: " + employeeID);
     }
 
     /*
@@ -59,13 +100,24 @@ public class EmployeeInfo extends EmpData{
       Example: 10% of salary for best performance, 8% of salary for average performance and so on.
       You can set arbitrary number for performance, so you probably need to send 2 arguments.
      */
-    public static int calculateEmployeeBonus(int numberOfYearsWithCompany, int performanceScore) {
-        Scanner userInput = new Scanner(System.in);
+    public double calculateEmployeeBonus() {
+        userInput = new Scanner(System.in);
+        double bonus = 0;
 
-        int total = 0;
-        //Performance score range: 0 - 100
+        System.out.print("Enter " + firstName + " " + lastName + "'s " + "total yearly salary: ");
+        double yearlySalary = userInput.nextDouble();
+        System.out.print("Enter " + firstName + " " + lastName + "'s " + "performance score: ");
+        int performanceScore = userInput.nextInt();
 
-        return total;
+        if (performanceScore >= 850 && yearlySalary >= 125000) {
+            return bonus = (yearlySalary * 10) * 0.01;
+        } else if (performanceScore >= 700 && yearlySalary >= 85000) {
+            return bonus = (yearlySalary * 8) * 0.01;
+        } else if (performanceScore >= 500 && yearlySalary >= 70000) {
+            return bonus = (yearlySalary * 5) * 0.01;
+        } else {
+            return bonus = (yearlySalary * 1) * 0.01;
+        }
     }
 
     /*
@@ -74,20 +126,25 @@ public class EmployeeInfo extends EmpData{
         It should return the total pension amount.
             Example: Employee will receive 5% of salary as pension for every year they are with the company
      */
-    public static int calculateEmployeePension() {
-        int total = 0;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter start date in format (example: May,2015): ");
-        String joiningDate = sc.nextLine();
-        System.out.println("Please enter today's date in format (example: August,2017): ");
-        String todaysDate = sc.nextLine();
-        String convertedJoiningDate = DateConversion.convertDate(joiningDate);
-        String convertedTodaysDate = DateConversion.convertDate(todaysDate);
+    public double calculateEmployeePension() {
+        userInput = new Scanner(System.in);
+        System.out.print("Enter " + firstName + ", " + lastName + "'s " + " salary: ");
+        int salary = userInput.nextInt();
+//        System.out.print("Enter start date in format (example: May,2015): ");
+//        String joiningDate = userInput.nextLine();
+//        System.out.print("Enter today's date in format (example: August,2017): ");
+//        String todaysDate = userInput.nextLine();
+//        String convertedJoiningDate = DateConversion.convertDate(joiningDate);
+//        String convertedTodaysDate = DateConversion.convertDate(todaysDate);
 
         // Figure out how to extract the number of years the employee has been with the company, using the above 2 dates
-        // Calculate pension
+        int totalNumOfYears = 5; //Need implement date extract function here.
 
-        return total;
+        // Calculate pension
+        double yearlyPension = (salary * 5) * 0.01;
+
+        //return total;
+        return yearlyPension * totalNumOfYears;
     }
 
     //generate a new employee ID & store the new id to employeeID global variable
@@ -102,10 +159,10 @@ public class EmployeeInfo extends EmpData{
     @Override
     public void employeeName() {
         userInput = new Scanner(System.in);
-        System.out.println("Enter first name: ");
+        System.out.print("Enter first name: ");
         this.firstName = userInput.nextLine();
 
-        System.out.println("Enter last name: ");
+        System.out.print("Enter last name: ");
         this.lastName = userInput.nextLine();
     }
 
@@ -113,19 +170,44 @@ public class EmployeeInfo extends EmpData{
     @Override
     public void assignDepartment() {
         userInput = new Scanner(System.in);
-        System.out.println("Enter department name: ");
+        System.out.print("Enter department name: ");
         this.deptName = userInput.nextLine();
     }
 
+    //Calculate regular salary as well as overtime hours
     @Override
-    public int calculateSalary() {
+    public double calculateSalary(double totalHrsWorked) {
+        double grossEarnings, incomeTax, netEarnings, regularEarnings, overTimeEarnings;
+        final int INCOME_TAX_RATE = 25;
 
-        return 0;
+        if (totalHrsWorked > 40) {
+            //Calculate overtime
+            double overTimeHrs = totalHrsWorked - 40;
+            regularEarnings = HOURLY_RATE * (totalHrsWorked - overTimeHrs);
+            overTimeEarnings = overTimeHrs * (HOURLY_RATE * 1.5);
+            grossEarnings = regularEarnings + overTimeEarnings;
+            incomeTax = (grossEarnings * INCOME_TAX_RATE) * 0.01;
+            netEarnings = grossEarnings - incomeTax;
+        } else {
+            //Calculate regular hours worked
+            grossEarnings = HOURLY_RATE * totalHrsWorked;
+            incomeTax = (grossEarnings * INCOME_TAX_RATE) * 0.01;
+            netEarnings = grossEarnings - incomeTax;
+        }
+        return netEarnings;
     }
 
-    //This is a helper method for calculate salary
-    public int getTotalHrsWorked() {
-
+    //Helper method - Returns an int value that passes into calculateSalary() method as an argument
+    public int getTotalHrsInput() {
+        userInput = new Scanner(System.in);
+        System.out.print("How many hours have you worked last week? ");
+        int totalHours = userInput.nextInt();
+        while (totalHours <= 0) {
+            System.out.println("WARNING! Enter a valid number.");
+            System.out.print("How many hours have you worked last week? ");
+            totalHours = userInput.nextInt();
+        }
+        return totalHours;
     }
 
     @Override
@@ -133,19 +215,33 @@ public class EmployeeInfo extends EmpData{
 
     }
 
+    //Generate a new email based on employee info & department
     @Override
-    public void generateEmail() {
-
+    public void formatEmail() {
+        this.email = firstName.toLowerCase(Locale.ROOT)   +
+                "."                                       +
+                this.lastName.toLowerCase(Locale.ROOT)    +
+                "."                                       +
+                this.deptName.toLowerCase(Locale.ROOT)    +
+                "."                                       +
+                "@"                                       +
+                this.companyName.toLowerCase(Locale.ROOT) +
+                ".com";
     }
 
+    //Generate a random password for the email
     @Override
     public void generatePassword() {
+        SecureRandom random = new SecureRandom();
+        StringBuilder customString = new StringBuilder();
 
-    }
+        final String chars = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789@!$%.&";
+        int defaultPasswordLength = 10;
 
-    @Override
-    public void changePassword() {
-
+        for (int i = 0; i < defaultPasswordLength; i++) {
+            int randomIndex = random.nextInt(chars.length());
+            this.password = customString.append(chars.charAt(randomIndex)).toString();
+        }
     }
 
     private static class DateConversion {

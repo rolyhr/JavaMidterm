@@ -15,7 +15,9 @@ public class FortuneEmployee {
      </p>
      **/
     public static void main(String[] args) {
+        EmployeeInfo startApp = new EmployeeInfo("Geico");
 
+        startApp.initialize();
     }
 
 }

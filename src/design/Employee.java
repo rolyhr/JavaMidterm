@@ -23,18 +23,15 @@ public interface Employee {
     void assignDepartment();
 
     //calculate employee salary
-    int calculateSalary();
+    double calculateSalary(double totalHrsWorked);
 
     //employee benefit
     void benefitLayout();
 
     //generateEmail() will create an email address based on the employee info
-    void generateEmail();
+    void formatEmail();
 
     //generate a default password for the employee email
     void generatePassword();
-
-    //changePassword() will let user change their default password.
-    void changePassword();
 
 }
