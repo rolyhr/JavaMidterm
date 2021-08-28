@@ -83,136 +83,196 @@ Answer: OOP stands for Object-oriented programming. OOP helps to organize variou
                 Inheritance: Extending states/behaviors to other classes.
 
 What is Java Package and which package is imported by default?
-Answer:
+Answer: Java Package is a group of similar types of classes & interface. There are two types of packages.
+        Build-in & User-defined packages.
+        java.lang is the default package that is imported by default.
 
 What is an API? List some API's that you have used so far.
-Answer:
+Answer: API stands for Application Programming Interface that allows two application to communicate
+        with each other.
+        We have used FileReader, BufferedReader, FileInputStream in our application.
 
 Does java support multiple inheritance? Why or why not?
-Answer:
+Answer: Java does not support multiple inheritance. Because java will not know which class you are
+        inheriting a certain object from if you extend two or more classes from a child class. Java
+        allows multilevel inheritance where Class B can inherit Class A, Class C can inherit Class B,
+        and so on.
 
 What is method overloading and when does it happen?
-Answer:
+Answer: Method Overloading is a static and compile-time polymorphism. It allows a class to have more
+        than one method of same name and order of parameter, number of parameter & types of parameter
+        are different.
 
 Explain exceptions in java and how to handle them.
-Answer:
+Answer: Something that is not expected within your code which happens during the execution time that
+        disrupt executing source code is called exception in Java.
+        You can handle exception by using a try-catch statement. Add the code you want to run in a try
+        block, then handle the exception in a catch block by specifying type of exception it will catch.
+        Also add a finally-block that will run whether it finds any exception or not.
 
 What is static keyword? When and how do we use it?
-Answer:
+Answer: Static keyword defines whether a member belongs to its class or to an instance. We can define
+        an object static by using the keyword "static" before the return type if it is a method, and
+        if it is a variable, we can define it before the data types. For example:
+                        static int num1 = 5;
+                        public static void sampleMethod() {
+                            System.out.println("Performing an action...");
+                        }
 
 What is final keyword? When and how do we use it?
-Answer:
+Answer: final keyword is used to restrict the user. It can be used on a variable, method, constructor,
+        and class. If you use the final keyword on a variable, you must initialize the value, and it
+        cannot be changed after that.
 
 Explain the difference between final, finally and finalize?
-Answer:
+Answer: FINAL: final keyword is used to restrict the user. It can be used on a variable, method,
+               constructor, and class. If you use the final keyword on a variable, you must initialize
+               the value, and it cannot be changed after that.
+        FINALLY: finally keyword is used with a try-catch block. Regardless of catching an exception,
+                 any code you put inside a finally-block will run.
+        FINALIZE: Unlike the "final" & "finally" keyword, finalize is method in java. finalize() method
+                  is called just before an object is collected by the java garbage collection.
 
 What is a constructor?
-Answer:
+Answer: Constructor helps us construct an object of a class. Every class has a default constructor. A
+        class can have multiple constructor with different parameters just like overloaded methods.
 
 Can we have multiple constructors in a class?
-Answer:
+Answer: A class can have multiple constructor with different parameters just like overloaded methods.
 
 If we don't have a constructor declared, what is called during the object creation?
-Answer:
+Answer: Even if the constructor is not declared
 
 What is "this" keyword in Java? When would we use it?
-Answer:
+Answer: "this" keyword refers to the instance variable. Use "this" keyword when you assign an instance
+        variable a value through a constructor or setter.
 
 What is "super" keyword in Java? What are some scenarios we would use it?
-Answer:
+Answer: "super" keyword refers to the superclass objects.
 
 What does JVM stand for?
-Answer:
+Answer: Java Virtual Machine
 
 Is JVM platform independent?
-Answer:
+Answer: No, JVM is platform specific. Each operating has its own JVM to run java programs.
 
 What version of Java are you using?
-Answer:
+Answer: Java 11.0.12
 
 What does JAR stand for?
-Answer:
+Answer: Java ARchive
 
 What is the difference between JDK and JVM?
-Answer:
+Answer: JDK is development kit, and it's platform dependent. JVM is environment to execute bytecode.
+        JVM is platform independent.
 
 What is the difference between JVM and JRE?
-Answer:
+Answer: JRE is the environment within which the virtual machine runs. JRE is the container, JVM is the
+        content. Java Runtime Environment contains JVM, class libraries, and other supporting files. It
+        does not contain any development tools such as compiler, debugger, etc.
 
 Explain the difference between compile-time and run-time?
-Answer:
+Answer: Compile-Time Errors prevent the code from running if it finds any syntax error.
+        Runtime-Errors prevent the code from completing execution.
 
 What is heap?
-Answer:
+Answer: Heap is pre-reserved memory location in computer.
 
 How does Java manage its memory?
-Answer:
+Answer: When the heap becomes full, garbage is collected. During the garbage collection objects that
+        are no longer used are cleared, so the new objects can be stored.
 
 What is the difference between String, StringBuffer and StringBuilder?
-Answer:
+Answer: String is an object. It's a sequence of characters. String is also a class which comes built-in
+        with java.
+        StringBuffer in java is used to create modifiable String objects. This means that we can use
+        StringBuffer to append, reverse, replace, concatenate and manipulate Strings or sequence of
+        characters.
+        StringBuilder class is used to create modifiable String. StringBuffer and StringBuilder are
+        similar, but StringBuilder is faster and preferred over StringBuffer.
 
 What is Singleton class?
-Answer:
+Answer: A Singleton class in Java allows only one instance to be created and provides global access to
+        all other classes through this single object or instance.
 
 What is Serialization and Deserialization?
-Answer:
+Answer: To serialize an object means to convert its state to a byte stream so that the byte stream can
+        be reverted into a copy of the object.
+        Deserialization is the reverse process where the byte stream is used to recreate the actual Java
+        object in memory.
 
 Explain the difference between While and Do..While loops?
-Answer:
+Answer: while loop tests the condition before executing the code block, and do-while loop execute the code
+        block at least once before check the condition.
 
 What is Enum?
-Answer:
+Answer: Enum in Java is a data type which contains a fixed set of constants.
 
 What is Iterator?
-Answer:
+Answer: Iterator is an object that can be used to loop through collections.
 
 Which one will take more memory: an int or Integer? Why?
-Answer:
+Answer: Integer will take more memory. Because int is a primitive data type which takes 4 bytes to store
+        and Integer is an object which takes 16 bytes to store int value.
 
 Why are Strings considered to be immutable in Java?
-Answer:
+Answer: String is immutable in Java because of the security, synchronization and concurrency, caching,
+        and class loading.
 
 What is constructor chaining in Java?
-Answer:
+Answer: Constructor chaining is the process of calling one constructor from another constructor with
+        respect to current object
 
 The difference between Serial and Parallel Garbage Collector?
-Answer:
+Answer: Primary difference between the serial and parallel collectors is that the parallel collector has
+        multiple threads that are used to speed up garbage collection.
 
-What does JIT stands for?
-Answer:
+What does JIT stand for?
+Answer: JIT stands for Just-In-Time. JIT compiler helps to improve the performance of java programs.
 
 Explain the process of Java garbage collection?
-Answer:
+Answer: Garbage collection is type of memory management. It automatically cleans up unused objects and
+        pointers in memory.
 
 Can you guarantee the garbage collection process?
-Answer:
+Answer: No, Garbage collection does not guarantee that a program will not run out of memory.
 
 What is the difference between stack and heap in Java?
-Answer:
+Answer: Non-static variables & any variables with primitive data type are stored in Stack.
+        Static variables, static methods & any variable with non-primitive data type are stored in Heap.
+        Heap is a memory place where the objects and its instance variable are stored.
 
 What is reflection in Java and why is it useful?
-Answer:
+Answer: Reflection allows an executing Java program to examine or "introspect" upon itself, and manipulate
+        internal properties of the program.
 
 What is multithreading in Java?
-Answer:
+Answer: Multithreading refers to a process of executing two or more threads simultaneously for maximum
+        utilization of the CPU.
 
 What is synchronization in Java?
-Answer:
+Answer: Synchronization in java is the capability to control the access of multiple threads to any shared
+        resource.
 
 What is a Framework?
-Answer:
+Answer: Framework is a predefined classes and functions that can be used to process input, manage other
+        functions in the application.
 
 What are the testing Frameworks available in Java?
-Answer:
+Answer: JUnit, TestNG, Cucumber and more.
 
 What are jUnit and testNG?
-Answer:
+Answer: JUnit is a unit testing framework for the Java programming language. It's great for unit testing.
+        TestNG stands for Test Next Generation. TestNG is an open-source test automation framework for
+        Java.
 
 What are the dependencies for this project?
-Answer:
+Answer: TestNG, MySQL Connector, Json, Mongo Java Driver.
 
 What is dependency injection in Java?
-Answer:
+Answer: Dependency injection is the concept in which objects get other required objects from outside.
 
 Explain what static binding and dynamic binding is?
-Answer:
+Answer: Static binding happens when all information needed to call a function is available at the
+        compile-time. Dynamic binding happens when the compiler cannot determine all information
+        needed for a function call at compile-time.
