@@ -16,7 +16,7 @@ public class Fibonacci {
     public static void fibSequence(int number) {
         /*
         Each number in the sequence is the sum of the two numbers that precede it.
-        So, the sequence goes: 0, 1, 1, 2, 3, 5, 8 and so on.
+        So, the sequence goes: 0, 1, 1, 2, 3, 5, 8 and so on
          */
         int previousNum = 0;
         int nextNum = 1;
