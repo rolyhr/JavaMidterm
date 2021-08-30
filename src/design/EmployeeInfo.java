@@ -130,15 +130,16 @@ public class EmployeeInfo extends EmpData{
         userInput = new Scanner(System.in);
         System.out.print("Enter " + firstName + ", " + lastName + "'s " + " salary: ");
         int salary = userInput.nextInt();
-//        System.out.print("Enter start date in format (example: May,2015): ");
-//        String joiningDate = userInput.nextLine();
-//        System.out.print("Enter today's date in format (example: August,2017): ");
-//        String todaysDate = userInput.nextLine();
-//        String convertedJoiningDate = DateConversion.convertDate(joiningDate);
-//        String convertedTodaysDate = DateConversion.convertDate(todaysDate);
+        System.out.print("Enter start date in format (example: May,2015): ");
+        String joiningDate = userInput.nextLine();
+        System.out.print("Enter today's date in format (example: August,2017): ");
+        String todaysDate = userInput.nextLine();
+        String convertedJoiningDate = DateConversion.convertDate(joiningDate);
+        String convertedTodaysDate = DateConversion.convertDate(todaysDate);
 
         // Figure out how to extract the number of years the employee has been with the company, using the above 2 dates
-        int totalNumOfYears = 5; //Need implement date extract function here.
+        int totalNumOfYears = Integer.parseInt(convertedTodaysDate.substring(convertedTodaysDate.length() - 4)) -
+                              Integer.parseInt(convertedJoiningDate.substring(convertedJoiningDate.length() - 4));
 
         // Calculate pension
         double yearlyPension = (salary * 5) * 0.01;
@@ -253,8 +254,7 @@ public class EmployeeInfo extends EmpData{
             String[] extractMonth = date.split(",");
             String givenMonth = extractMonth[0];
             int monthDate = whichMonth(givenMonth);
-            String actualDate = monthDate + "/" + extractMonth[1];
-            return actualDate;
+            return monthDate + "/" + extractMonth[1];
         }
 
         public static int whichMonth(String givenMonth) {
@@ -280,25 +280,24 @@ public class EmployeeInfo extends EmpData{
                     date = 6;
                     break;
                 case July:
-                    date = 1;
+                    date = 7;
                     break;
                 case August:
-                    date = 1;
+                    date = 8;
                     break;
                 case September:
-                    date = 1;
+                    date = 9;
                     break;
                 case October:
-                    date = 1;
+                    date = 10;
                     break;
                 case November:
-                    date = 1;
+                    date = 11;
                     break;
                 case December:
-                    date = 1;
+                    date = 12;
                     break;
                 default:
-                    date = 0;
                     break;
             }
             return date;
