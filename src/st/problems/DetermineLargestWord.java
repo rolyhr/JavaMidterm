@@ -20,7 +20,20 @@ public class DetermineLargestWord {
         Map<Integer, String> map = new HashMap<Integer, String>();
         String st = "";
 
-        // Implement here
+        String[] words = wordGiven.split("\\s");
+        for (int i = 0; i < words.length; i++){
+            map.put(i+1, words[i]);
+        }
+
+        int maxLength = 0;
+        for (Map.Entry<Integer, String> x : map.entrySet()) {
+            if (x.getValue().length() > maxLength) {
+                maxLength = x.getValue().length();
+                st = x.getValue();
+            }
+        }
+
+        System.out.println(maxLength + " " + st);
 
         return map;
     }

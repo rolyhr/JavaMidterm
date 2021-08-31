@@ -1,6 +1,4 @@
-package string.problems;
-
-import java.util.Arrays;
+package st.problems;
 
 public class Anagram {
 
@@ -12,7 +10,6 @@ public class Anagram {
 
     public static void main(String[] args) {
         System.out.println(isAnagram("cat", "aCt"));
-        isAnagram2("Debit Card", "Bad Credit");
     }
 
     //This method can only track 26 characters of the alphabet
@@ -48,26 +45,5 @@ public class Anagram {
             }
         }
         return true;
-    }
-
-    //This method can track 26 characters of the alphabet including any spaces
-    static void isAnagram2(String str1, String str2) {
-        String s1 = str1.replaceAll("\\s", "");
-        String s2 = str2.replaceAll("\\s", "");
-        boolean status = true;
-        if (s1.length() != s2.length()) {
-            status = false;
-        } else {
-            char[] ArrayS1 = s1.toLowerCase().toCharArray();
-            char[] ArrayS2 = s2.toLowerCase().toCharArray();
-            Arrays.sort(ArrayS1);
-            Arrays.sort(ArrayS2);
-            status = Arrays.equals(ArrayS1, ArrayS2);
-        }
-        if (status) {
-            System.out.println("Is Anagram");
-        } else {
-            System.out.println("Not Anagram");
-        }
     }
 }
