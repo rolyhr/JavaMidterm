@@ -12,6 +12,7 @@ public class UnitTestingStringProblem {
         unitTest.testAnagram();
         unitTest.testDetermineLargestWord();
         unitTest.testIsPalindrome();
+
     }
 
     public void testAnagram() {
