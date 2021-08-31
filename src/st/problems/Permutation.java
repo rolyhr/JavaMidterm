@@ -1,4 +1,4 @@
-package string.problems;
+package st.problems;
 
 public class Permutation {
 
