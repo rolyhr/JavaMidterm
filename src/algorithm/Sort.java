@@ -74,6 +74,8 @@ public class Sort {
         return array;
     }
 
+    //Still getting exception on LINE: 84
+    //Get stackoverflow error when use the randomizer
     public int[] mergeSort (int[] array, int lowIndex, int highIndex) {
         final long startTime = System.currentTimeMillis();
 
@@ -82,7 +84,7 @@ public class Sort {
             midIndex = (lowIndex + highIndex) / 2;
         }
 
-        mergeSort(array, lowIndex, midIndex);
+        mergeSort(array, lowIndex, midIndex); //Still getting exception on LINE: 84
         mergeSort(array, midIndex + 1, highIndex);
         merge(array, lowIndex, midIndex, highIndex);
 
