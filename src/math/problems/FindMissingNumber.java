@@ -11,5 +11,38 @@ public class FindMissingNumber {
          */
         int[] array = new int[] {10, 2, 1, 4, 5, 3, 7, 8, 6};
 
+        System.out.println(findMissingNum(array));
+        System.out.println(findMissingNum2(array, array.length));
+
+    }
+
+    //Method 1
+    public static int findMissingNum(int[] array) {
+        int temp = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i+1; j < array.length; j++) {
+                if (array[j] < array[i]) {
+                    temp = array[j];
+                    array[j] = array[i];
+                    array[i] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < array.length; i++) { //getting index out of bound exception
+            if (array[0] + array[i+1] != array[i+2]) {
+                temp = (array[0] + array[i+1]);
+            }
+        }
+        return temp;
+    }
+
+    //Method 2
+    public static int findMissingNum2(int[] array, int length) {
+        int missingNum = 1;
+        for (int i = 2; i <= (length + 1); i++) {
+            missingNum = missingNum + i;
+            missingNum = missingNum - array[i - 2];
+        }
+        return missingNum;
     }
 }
