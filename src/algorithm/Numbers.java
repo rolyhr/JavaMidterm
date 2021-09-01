@@ -23,26 +23,7 @@ public class Numbers {
 
         int[] num = new int[100000];
         storeRandomNumbers(num);
-        Sort sort = new Sort();
-
-        sort.selectionSort(num);
-        System.out.println(sort.executionTime + " second(s) to sort using SelectionSort");
-
-        sort.insertionSort(num);
-        System.out.print(sort.executionTime + " seconds to sort using InsertionSort");
-
-        sort.bubbleSort(num);
-        System.out.println(sort.executionTime + " second(s) to sort using BubbleSort");
-
-        sort.mergeSort(num, num[0], num.length-1); //Through "stackoverflow error" when used a randomizer
-        System.out.println(sort.executionTime + " second(s) to sort using MergeSort");
-
-
         Sort algo = new Sort();
-        algo.selectionSort(num);
-        double selectionSortExecutionTime = algo.executionTime;
-        System.out.println("Total Execution Time of " + num.length + " numbers in Selection Sort took: "
-                + selectionSortExecutionTime + " milliseconds");
 
         connectToSqlDB.insertDataFromArrayToSqlTable(num, "selection_sort", "SortingNumbers");
         List<String> numbers = connectToSqlDB.readDataBase("selection_sort", "SortingNumbers");
@@ -51,26 +32,43 @@ public class Numbers {
         int n = num.length;
         randomize(num, n);
 
+        //Selection Sort
+        algo.selectionSort(num);
+        double selectionSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + " numbers in Selection Sort took: "
+                + selectionSortExecutionTime + " seconds");
+
         // Insertion Sort
         algo.insertionSort(num);
         double insertionSortExecutionTime = algo.executionTime;
         System.out.println("Total Execution Time of " + num.length + " numbers in Insertion Sort took: "
-                + insertionSortExecutionTime + " milliseconds");
+                + insertionSortExecutionTime + " seconds");
 
-        /*
-         By following the same convention we used for Selection Sort, continue to do the same for all remaining sorting
-            algorithms
-         */
+        //Bubble Sort
+        algo.bubbleSort(num);
+        double bubbleSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + " numbers in Bubble Sort took: "
+                + insertionSortExecutionTime + " seconds");
+
+        //Merge Sort
+        algo.mergeSort(num, num[0], num.length-1);
+        double mergeSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + " numbers in Bubble Sort took: "
+                + insertionSortExecutionTime + " seconds");
 
 
         /*
         Can you come to conclusion about which sorting algorithm is most efficient, given the size of the data set?
-         */
 
+        Time stamps to sort 10,000 numbers:
+        9.561 seconds to sort using SelectionSort
+        0.003 seconds to sort using InsertionSort
+        2.655 seconds to sort using BubbleSort
+        0.000 seconds to sort using MergeSort
+
+        Out of these four types of sort, Merge sort would be the quickest.
+        */
     }
-
-
-
 
     /*
     HELPER METHODS
