@@ -23,7 +23,6 @@ public class Sort {
                 if (array[i] < array[min])
                     min = i;
             }
-
             int temp = array[min];
             array[min] = array[j];
             array[j] = temp;
@@ -38,14 +37,15 @@ public class Sort {
     public int[] insertionSort(int[] array) {
         final long startTime = System.currentTimeMillis();
 
-        int i, j, key, temp;
-        for (i = 1; i < array.length; i++) {
-            key = array[i];
-            j = i - 1;
-            while (j >= 0 && key < array[j]) {
-                temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
+        int i, j, key, temp; //Declared all the variables are in the loop
+        for (i = 1; i < array.length; i++) { //Start the iteration from 1st index to be able to check the item to the left
+            key = array[i]; //Assign a key
+
+            j = i - 1; //Decrementing will help to check the item to the left
+            while (j >= 0 && key < array[j]) { //Check if the key is less than the item to the left
+                temp = array[j]; //Swap
+                array[j] = array[j + 1]; //Swap
+                array[j + 1] = temp; //Swap
                 j--;
             }
         }
@@ -58,13 +58,13 @@ public class Sort {
     public int[] bubbleSort(int[] array) {
         final long startTime = System.currentTimeMillis();
 
-        int i, j, temp = 0;
+        int i, j, temp = 0; //Declared all the variables are in the loop
         for (i = 0; i < array.length - 1; i++) {
             for (j = 0; j < array.length - 1 - i; j++) {
-                if (array[j] > array[j + 1]) {
-                    temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
+                if (array[j] > array[j + 1]) { //Checking first item to the adjacent item
+                    temp = array[j]; //Swap
+                    array[j] = array[j + 1]; //Swap
+                    array[j + 1] = temp; //Swap
                 }
             }
         }
@@ -77,42 +77,44 @@ public class Sort {
     public int[] mergeSort (int[] array, int lowIndex, int highIndex) {
         final long startTime = System.currentTimeMillis();
 
-        if (lowIndex == highIndex) {
+        int midIndex = 0;
+        if (lowIndex < highIndex) {
+            midIndex = (lowIndex + highIndex) / 2;
         }
-        else {
-            int midIndex = (lowIndex + highIndex) / 2;
-            mergeSort(array, lowIndex, midIndex);
-            mergeSort(array, midIndex + 1, highIndex);
-            merge(array, lowIndex, midIndex, highIndex);
-        }
+
+        mergeSort(array, lowIndex, midIndex);
+        mergeSort(array, midIndex + 1, highIndex);
+        merge(array, lowIndex, midIndex, highIndex);
+
         final double endTime = System.currentTimeMillis();
         double totalTime = endTime - startTime;
         this.executionTime = totalTime / 1000; //Converted milliseconds to seconds
         return array;
     }
+
     //mergeSort Helper Method
     public void merge(int[] array, int lowIndex, int midIndex, int highIndex) {
-        int[] L = new int[midIndex - lowIndex + 2];
+        int[] l = new int[midIndex - lowIndex + 2];
 
         for (int i = lowIndex; i <= midIndex; i++) {
-            L[i - lowIndex] = array[i];
+            l[i - lowIndex] = array[i];
         }
-        L[midIndex - lowIndex + 1] = Integer.MAX_VALUE;
-        int[] R = new int[highIndex - midIndex + 1];
+        l[midIndex - lowIndex + 1] = Integer.MAX_VALUE;
+        int[] r = new int[highIndex - midIndex + 1];
 
         for (int i = midIndex + 1; i <= highIndex; i++) {
-            R[i - midIndex - 1] = array[i];
+            r[i - midIndex - 1] = array[i];
         }
-        R[highIndex - midIndex] = Integer.MAX_VALUE;
+        r[highIndex - midIndex] = Integer.MAX_VALUE;
         int i = 0, j = 0;
 
         for (int k = lowIndex; k <= highIndex; k++) {
-            if (L[i] <= R[j]) {
-                array[k] = L[i];
+            if (l[i] <= r[j]) {
+                array[k] = l[i];
                 i++;
             }
             else {
-                array[k] = R[j];
+                array[k] = r[j];
                 j++;
             }
         }
@@ -139,10 +141,22 @@ public class Sort {
         return list;
     }
 
-    public int[] shellSort(int[] array) {
-        int[] list = array;
-        //implement here
+    public int[] shellSort(int[] array, int arrayLength) {
+        final long startTime = System.currentTimeMillis();
 
-        return list;
+        for (int interval = arrayLength / 2; interval > 0; interval /= 2) {
+            for (int i = interval; i < arrayLength; i += 1) {
+                int temp = array[i];
+                int j;
+                for (j = i; j >= interval && array[j - interval] > temp; j -= interval) {
+                    array[j] = array[j - interval];
+                }
+                array[j] = temp;
+            }
+        }
+        final double endTime = System.currentTimeMillis();
+        double totalTime = endTime - startTime;
+        this.executionTime = totalTime / 1000; //Converted milliseconds to seconds
+        return array;
     }
 }

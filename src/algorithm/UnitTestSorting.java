@@ -11,25 +11,12 @@ public class UnitTestSorting {
      */
 
     Sort sort; //Declared variable of type Sort
-    int[] unSortedArray = {6, 9, 2, 5, 1, 0, 4};
-    int[] sortedArray = {0, 1, 2, 4, 5, 6, 9};
-
-    public static void main(String[] args) {
-        UnitTestSorting unitTest = new UnitTestSorting();
-        Sort sort = new Sort();
-
-        unitTest.testSelectionSort();
-        unitTest.testInsertionSort();
-        unitTest.testBubbleSort();
-        unitTest.testMergeSort();
-
-        //Sorting and printing an array using mergeSort()
-        //System.out.println(Arrays.toString(sort.mergeSort(unitTest.unSortedArray, unitTest.unSortedArray[0], unitTest.unSortedArray.length - 1)));
-    }
+    int[] unSortedArray = {80, 50, 10, 30, 60, 20, 40};
+    int[] sortedArray = {10, 20, 30, 40, 50, 60, 80};
 
     // Implement Unit test for rest of the sorting algorithms below
 
-    @Test ////Testing selectionSort() method from Sort.java
+    @Test //Testing selectionSort() method from Sort.java
     public void testSelectionSort() {
         // Create instance of Sort class
         sort = new Sort();
@@ -39,7 +26,7 @@ public class UnitTestSorting {
         Assert.assertEquals(actualResult, expectedResult, "Selection Sort Failed - Not Sorted!");
     }
 
-    @Test ////Testing insertionSort() method from Sort.java
+    @Test //Testing insertionSort() method from Sort.java
     public void testInsertionSort() {
         // Create instance of Sort class
         sort= new Sort();
@@ -49,7 +36,7 @@ public class UnitTestSorting {
         Assert.assertEquals(actualResult, expectedResult, "Insertion Sort Failed - Not Sorted!");
     }
 
-    @Test ////Testing bubbleSort() method from Sort.java
+    @Test //Testing bubbleSort() method from Sort.java
     public void testBubbleSort() {
         // Create instance of Sort class
         sort= new Sort();
@@ -59,7 +46,7 @@ public class UnitTestSorting {
         Assert.assertEquals(actualResult, expectedResult, "Bubble Sort Failed - Not Sorted!");
     }
 
-    @Test ////Testing mergeSort() method from Sort.java
+    @Test //Testing mergeSort() method from Sort.java
     public void testMergeSort() {
         // Create instance of Sort class
         sort= new Sort();
@@ -67,5 +54,15 @@ public class UnitTestSorting {
         int[] actualResult = sort.mergeSort(unSortedArray, unSortedArray[0], unSortedArray.length-1);
         int[] expectedResult = sortedArray;
         Assert.assertEquals(actualResult, expectedResult, "Merge Sort Failed - Not Sorted!");
+    }
+
+    @Test //Testing shellSort() method from Sort.java
+    public void testShellSort() {
+        // Create instance of Sort class
+        sort= new Sort();
+
+        int[] actualResult = sort.shellSort(unSortedArray, unSortedArray.length);
+        int[] expectedResult = sortedArray;
+        Assert.assertEquals(actualResult, expectedResult, "Shell Sort Failed - Not Sorted!");
     }
 }
